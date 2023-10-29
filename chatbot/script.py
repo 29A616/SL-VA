@@ -1,4 +1,4 @@
-import dotenv
+# import dotenv
 import os
 from langchain.memory import ConversationBufferWindowMemory
 from langchain.chains import ConversationChain 
@@ -11,7 +11,7 @@ from langchain.prompts import (
     MessagesPlaceholder
     )
 #api key
-dotenv.load_dotenv(".env")
+# dotenv.load_dotenv(".env")
 api_key = os.getenv('OPENAI_API_KEY')
 
 #LLM
