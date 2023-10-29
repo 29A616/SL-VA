@@ -11,23 +11,27 @@ h1 {
 }
 
 h4 {
+    display: inherit;
     margin: 10px;
-    text-align: center;
+    justify-content: center;
 }
 
 .container {
   display: flex;
   flex-direction: row;
+  justify-content: center;
 
 }
 
 .chats {
+    display: flex;
+    flex-direction: column;
     width: 30%;
     height: 100%;
-    float: left;
-  }
+    margin-left: 3%;
+}
+
 .chat {
-    float: right;
     width: 70%;
     height: 80vh;
     display: flex;
@@ -59,14 +63,14 @@ h4 {
 
 .userMessage {
     opacity: 1;
-    transition: opacity 1s linear 2s;
+    /* transition: opacity 1s linear 2s; */
     background-color: #0080FF;
     text-align: right;
 }
 
 .IAMessage {
     opacity: 1;
-    transition: opacity 0.5s ease-in-out 2s;
+    /* transition: opacity 0.5s ease-in-out 2s; */
     background: grey;
     text-align: left;
 }
@@ -92,12 +96,11 @@ input, button, textarea {
   }
 
 input[type="submit"] {
+    display: flex;
     background-color: #0080FF;
     color: #fff;
-    display: flex;
-    width: 10%;
-    justify-content: space-around;
-    margin: 0px 1px 0px 1px;
+    width: max-content;
+    /* margin: 0px 1px 0px 1px; */
   }
 
 input[disabled] {
