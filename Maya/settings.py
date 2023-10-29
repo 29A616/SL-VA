@@ -28,7 +28,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['sl-va-production.up.railway.app', '127.0.0.1',]
+ALLOWED_HOSTS = ['sl-va-production.up.railway.app', 'railway.app', '127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -123,6 +123,7 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR,'chatbot/static/'),
     )
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
