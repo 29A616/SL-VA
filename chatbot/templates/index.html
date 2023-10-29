@@ -1,0 +1,35 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es-ec">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Chatbot</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+        <link rel="stylesheet" href="{% static 'styles/index.css' %}">
+    </head>
+    <body>
+        <h1>Maya</h1>
+        <div class="container">
+        <div class="chats">
+          <h4>Historial (soon)</h4>
+        </div>     
+        <div class="chat">
+          <h4>Conversación</h4>
+          <div class="chat-messages"></div>
+          <div>
+            <form>
+              <textarea title="Titulo" placeHolder="Inserte su mensaje..." type="input" name="A" id="message" autocomplete="off" maxlength="2500"></textarea>
+              <input type="submit" name="B" disabled>
+            </form>
+          </div>    
+        </div>
+      </div>
+        <script src="{% static 'js/chat.js' %}" async defer>
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" async defer>
+        </script>
+    </body>
+</html>
