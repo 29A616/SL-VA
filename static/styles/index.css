@@ -40,6 +40,24 @@ h4 {
     
 }  
 
+/* @media screen and (max-width: 1080px) {
+  .chats {
+    display: none;
+    flex-direction: column;
+    width: 30%;
+    height: 100%;
+    margin-left: 3%;
+  }
+  .chat {
+    width: 85%;
+    height: 80vh;
+    display: flex;
+    margin-right: 3%;
+    flex-direction: column;
+    justify-content: center;
+  
+  }
+} */
 .chat-messages {
     display: flex;
     overflow-y: scroll;
