@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Registro</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="{% static '/styles/forms.css' %}" />
+  </head>
+  <body>
+    <main>
+      <h1>Registrar nuevo usuario</h1>
+      <p id="error">{{ error }}</p>
+        <form action="/signup/" method="POST" id="signup">
+          {% csrf_token %} {% comment %} {{ form.as_p }} {% endcomment %}
+          <div>
+            <label for="username">Nombre de usuario:</label>
+            <input
+              type="text"
+              name="username"
+              id="username"
+              placeholder="Usuario..."
+              required
+            />
+          </div>
+          <div class="field">
+            <label for="password1">Contraseña:</label>
+            <input
+              type="password"
+              name="password1"
+              id="password1"
+              placeholder="Contraseña..."
+              required
+            />
+          </div>
+          <div class="field">
+            <label for="password2">Repita la contraseña:</label>
+            <input
+              type="password"
+              name="password2"
+              id="password2"
+              placeholder="Contraseña..."
+              required
+            />
+          </div>
+          <button>Registrar</button>
+        </form>
+        <div id="center">
+          <p id="center">
+            ¿Ya te encuentras registrado? <a href="/login/"> Inciar sesión.</a>
+          </p>
+        </div>
+    </main>
+    <script src="" async defer></script>
+  </body>
+</html>

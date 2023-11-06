@@ -10,7 +10,12 @@
         <link rel="stylesheet" href="{% static 'styles/index.css' %}">
     </head>
     <body>
-        <h1>Maya</h1>
+        <div>
+          <h1>Maya</h1>
+          {% if user.is_authenticated %}
+          <h4>Usuario: {{ request.user.username }}. <a href='/logout/'>cerrar sesión</a></h4>
+          {% endif %}
+        </div>
         <div class="container">
         <div class="chats">
           <h4>Historial (soon)</h4>
@@ -19,7 +24,8 @@
           <h4>Conversación</h4>
           <div class="chat-messages"></div>
           <div>
-            <form>
+            <form action="/api/chat/" method="POST" id='chat'>
+              {% csrf_token %}
               <textarea title="Titulo" placeHolder="Inserte su mensaje..." type="input" name="A" id="message" autocomplete="off" maxlength="2500"></textarea>
               <input type="submit" name="B" disabled>
             </form>
