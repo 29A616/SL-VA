@@ -12,6 +12,15 @@
     <body>
         <div>
           <h1>Maya</h1>
+          {% comment %} <button id="theme-button">Cambiar tema</button>
+          <script>
+          const themeButton = document.querySelector("#theme-button");
+
+          themeButton.addEventListener("click", () => {
+            // Cambia el tema al opuesto del tema actual
+            document.body.classList.toggle("dark");
+          });
+          </script> {% endcomment %}
           {% if user.is_authenticated %}
           <h4>Usuario: {{ request.user.username }}. <a href='/logout/'>cerrar sesión</a></h4>
           {% endif %}
@@ -22,7 +31,12 @@
         </div>     
         <div class="chat">
           <h4>Conversación</h4>
-          <div class="chat-messages"></div>
+          <div class="chat-messages">
+            {% for message in messages %}
+            <p class='userMessage'>{{ message.user_message }}</p>
+            <p class='IAMessage'>{{ message.va_message }}</p>
+            {% endfor %}
+          </div>
           <div>
             <form action="/api/chat/" method="POST" id='chat'>
               {% csrf_token %}

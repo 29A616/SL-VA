@@ -1,8 +1,15 @@
-html, body {
+body {
     font-family: sans-serif;
     font-size: 16px;
     background-color: #1d1d1d;  
     color: #fff;    
+}
+
+body.dark {
+  font-family: sans-serif;
+  font-size: 16px;
+  background-color: #fff;  
+  color: #1d1d1d;    
 }
 
 h1 {

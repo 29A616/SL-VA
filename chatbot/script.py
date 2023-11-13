@@ -1,6 +1,6 @@
 # import dotenv
 import os
-from langchain.memory import ConversationBufferWindowMemory
+from langchain.memory import ConversationBufferWindowMemory, ChatMessageHistory, PostgresChatMessageHistory
 #from langchain.chains import ConversationChain 
 from langchain.chat_models import ChatOpenAI
 from langchain.chains import LLMChain

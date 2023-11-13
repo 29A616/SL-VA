@@ -8,20 +8,31 @@ from django.db import IntegrityError
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from chatbot.script import conversation as cv
+from .models import ChatHistory
 
 # Create your views here.
 @login_required(login_url='/login/')
 def index(request):
-    return render(request, 'index.html')
+    try:
+        messages = ChatHistory.objects.filter(user_id=User.objects.get(username=request.user))
+    except Exception as e:
+        print(e)
+    return render(request, 'index.html', {'messages': messages})
+
 @api_view(['POST'])
 @login_required
 def chat(request):
-    user_msg = request.data['message']
- #   print(user_msg)
- #   print(request.data)
-    reply = cv({'question':user_msg})
-    response = reply['text']
-#    print(response)
+    try:
+        user_msg = request.data['message']
+    #   print(user_msg)
+    #   print(request.data)
+        reply = cv({'question':user_msg})
+        response = reply['text']
+    #    print(response)
+        dot = ChatHistory(user_id=User.objects.get(username=request.user) , user_message=user_msg, va_message=response)
+        dot.save()
+    except Exception as e:
+        print(str(e))
     return Response(response)
 
 def signup(request):
@@ -43,6 +54,7 @@ def signup(request):
         return render(request, 'signup.html', {
             'form': UserCreationForm, 'error': 'Las contraseñas no coinciden'
         })
+
 def signout(request):
     logout(request)
     return redirect('/')
