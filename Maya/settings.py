@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
-import dj_database_url
+#import dj_database_url
 # import dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -81,10 +81,15 @@ WSGI_APPLICATION = 'Maya.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-database_url = os.eviron.get('DATABASE_PRIVATE_URL')
 
 DATABASES = {
-    'default': {dj_database_url.parse(database_url),
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": os.environ.get('PGDATABASE'),
+        "USER": os.environ.get('PGUSER'),
+        "PASSWORD": os.environ.get('PGPASSWORD'),
+        "HOST": os.environ.get('PGHOST'),
+        "PORT": os.environ.get('PGPORT'),
     }
 }
 
