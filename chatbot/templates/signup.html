@@ -7,14 +7,16 @@
     <title>Registro</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="{% static '/styles/form.css' %}" />
+    <link rel="stylesheet" href="{% static 'styles/form.css' %}" />
+    <link rel="stylesheet" href="{% static 'styles/form(light).css' %}" />
+    <link rel="stylesheet" href="{% static 'styles/responsive.css' %}" />
   </head>
   <body>
     <main>
       <form action="/signup/" method="POST" id="signup">
         {% csrf_token %}
         <h2 class="title">Registrar nuevo usuario</h2>
-        <p id="error">{{ error }}</p>
+        <p class="invalid" id="error">{{ error }}</p>
         <div class="inputs">
           <div class="input-box">
             <label for="username">Nombre de usuario:</label>
@@ -23,7 +25,7 @@
               name="username"
               id="username"
               placeholder="Usuario..."
-              onkeydown="submitOnEnter(event)"
+              onkeydown="submitOnEnter(event, 'password1')"
               required
             />
           </div>
@@ -34,7 +36,7 @@
               name="password1"
               id="password1"
               placeholder="Contraseña..."
-              onkeydown="submitOnEnter(event)"
+              onkeydown="submitOnEnter(event, 'password2')"
               required
             />
           </div>
@@ -45,14 +47,12 @@
               name="password2"
               id="password2"
               placeholder="Contraseña..."
-              onkeydown="submitOnEnter(event)"
+              onkeydown="submitOnEnter(event, null)"
               required
             />
           </div>
         </div>
-        <a href="javascript:void(0)" onclick="submit(event)" class="submit"
-          >Registrar</a
-        >
+        <a href="javascript:void(0)" onclick="submitOnEnter(event, null)" class="submit">Registrar</a>
         <p id="center" class="new">
           ¿Ya te encuentras registrado? <a href="/login/"> Inciar sesión.</a>
         </p>
@@ -60,44 +60,34 @@
     </main>
     <script>
       function submitOnEnter(event, nextField) {
-        if (event.key === "Enter") {
+        if (event.key === "Enter" || event.type === "click") {
           event.preventDefault();
-    
+
           var form = document.getElementById("signup");
           var requiredFields = form.querySelectorAll('[required]');
-          var allFieldsFilled = Array.from(requiredFields).every(function(field) {
+          var allFieldsFilled = Array.from(requiredFields).every(function (field) {
             return field.value.trim() !== ''; // Check if each required field is not empty
           });
-    
+
           if (allFieldsFilled) {
             if (nextField) {
-              document.getElementsByName(nextField)[0].focus();
+              document.getElementById(nextField).focus();
             } else {
               form.submit();
             }
           }
         }
       }
-    
-      document.querySelectorAll(".input-box input").forEach(function(input, index, array) {
-        input.addEventListener("keydown", function(event) {
+
+      document.querySelectorAll(".input-box input").forEach(function (input, index, array) {
+        input.addEventListener("keydown", function (event) {
           if (event.key === "Enter") {
-            event.preventDefault();
             // Move focus to the next input or submit the form if it's the last input
-            if (index < array.length - 1) {
-              array[index + 1].focus();
-            } else {
-              submitOnEnter(event, null);
-            }
+            event.preventDefault();
+            index < array.length - 1 ? array[index + 1].focus() : submitOnEnter(event, null);
           }
         });
       });
-    
-      // Use the correct class name for the click event
-      document.querySelector(".submit").addEventListener("click", function(event) {
-        event.preventDefault();
-        submitOnEnter(event, null);
-      });
-    </script>    
+    </script>
   </body>
 </html>
