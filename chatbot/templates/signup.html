@@ -7,52 +7,97 @@
     <title>Registro</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="{% static '/styles/forms.css' %}" />
+    <link rel="stylesheet" href="{% static '/styles/form.css' %}" />
   </head>
   <body>
     <main>
-      <h1>Registrar nuevo usuario</h1>
-      <p id="error">{{ error }}</p>
-        <form action="/signup/" method="POST" id="signup">
-          {% csrf_token %} {% comment %} {{ form.as_p }} {% endcomment %}
-          <div>
+      <form action="/signup/" method="POST" id="signup">
+        {% csrf_token %}
+        <h2 class="title">Registrar nuevo usuario</h2>
+        <p id="error">{{ error }}</p>
+        <div class="inputs">
+          <div class="input-box">
             <label for="username">Nombre de usuario:</label>
             <input
               type="text"
               name="username"
               id="username"
               placeholder="Usuario..."
+              onkeydown="submitOnEnter(event)"
               required
             />
           </div>
-          <div class="field">
+          <div class="input-box">
             <label for="password1">Contraseña:</label>
             <input
               type="password"
               name="password1"
               id="password1"
               placeholder="Contraseña..."
+              onkeydown="submitOnEnter(event)"
               required
             />
           </div>
-          <div class="field">
+          <div class="input-box">
             <label for="password2">Repita la contraseña:</label>
             <input
               type="password"
               name="password2"
               id="password2"
               placeholder="Contraseña..."
+              onkeydown="submitOnEnter(event)"
               required
             />
           </div>
-          <button>Registrar</button>
-        </form>
-        <div id="center">
-          <p id="center">
-            ¿Ya te encuentras registrado? <a href="/login/"> Inciar sesión.</a>
-          </p>
         </div>
+        <a href="javascript:void(0)" onclick="submit(event)" class="submit"
+          >Registrar</a
+        >
+        <p id="center" class="new">
+          ¿Ya te encuentras registrado? <a href="/login/"> Inciar sesión.</a>
+        </p>
+      </form>
     </main>
-    <script src="" async defer></script>
+    <script>
+      function submitOnEnter(event, nextField) {
+        if (event.key === "Enter") {
+          event.preventDefault();
+    
+          var form = document.getElementById("signup");
+          var requiredFields = form.querySelectorAll('[required]');
+          var allFieldsFilled = Array.from(requiredFields).every(function(field) {
+            return field.value.trim() !== ''; // Check if each required field is not empty
+          });
+    
+          if (allFieldsFilled) {
+            if (nextField) {
+              document.getElementsByName(nextField)[0].focus();
+            } else {
+              form.submit();
+            }
+          }
+        }
+      }
+    
+      document.querySelectorAll(".input-box input").forEach(function(input, index, array) {
+        input.addEventListener("keydown", function(event) {
+          if (event.key === "Enter") {
+            event.preventDefault();
+            // Move focus to the next input or submit the form if it's the last input
+            if (index < array.length - 1) {
+              array[index + 1].focus();
+            } else {
+              submitOnEnter(event, null);
+            }
+          }
+        });
+      });
+    
+      // Use the correct class name for the click event
+      document.querySelector(".submit").addEventListener("click", function(event) {
+        event.preventDefault();
+        submitOnEnter(event, null);
+      });
+    </script>    
   </body>
 </html>

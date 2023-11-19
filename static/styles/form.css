@@ -1,0 +1,129 @@
+/*
+COLORES:
+
+NEGRO: #011126;
+AZUL: #03a9f4;
+ROJO: #F25E95;
+Blanco(letras): #c7c7c7;
+*/
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+    background: #011126;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font:normal 12px Arial;
+    padding: 0px 20px;
+}
+
+main {
+   width: 100%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+
+form {
+    width: 500px;
+    padding: 60px 40px;
+    background: #011126;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border:none;
+    border-radius: 30px;
+    box-shadow: -5px -5px 10px rgba(255,255,255,0.05),
+                5px 5px 15px rgba(0,0,0,0.5); 
+}
+
+form h2{
+    color: #c7c7c7;
+    font-size: 1.8em;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin-bottom: 20px;
+}
+
+form .inputs{
+    text-align: left;
+    width: 100%;
+    padding: 30px;
+}
+
+form .inputs .input-box{
+    margin-top: 20px;
+}
+
+form .inputs .input-box label{
+    display: block;
+    color: #868686;
+    margin-bottom: 5px;
+    font-size: 1.5em;
+}
+
+form .inputs .input-box input{
+   width: 100%;
+   height: 50px;
+   background: #011126;
+   border: none;
+   outline: none;
+   border-radius: 40px;
+   padding: 5px 15px;
+   font-size: 1.5em;
+   color: #03a9f4;
+
+   box-shadow: inset -2px -2px 6px rgba(255,255,255,0.1),
+                inset 2px 2px 6px rgba(0,0,0,0.8) ;
+}
+
+form a.submit{
+    margin-top: 20px;
+    width: 150px;
+    height: 50px;
+    border-radius: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #03a9f4;
+    text-transform: uppercase;
+    font:bold 1.3em Arial;
+    text-decoration: none;
+
+    box-shadow: -2px -2px 6px rgba(255,255,255,0.1),
+                2px 2px 6px rgba(0,0,0,0.8);    
+}
+
+form a.submit:active{
+    color: #006c9c;
+
+    box-shadow: inset -2px -2px 6px rgba(255,255,255,0.1),
+                inset 2px 2px 6px rgba(0,0,0,0.8);    
+}
+
+form .new{
+    margin-top: 30px;
+    color: #555;
+    font-size: 1.3em;
+}
+
+form .new a{
+    text-decoration: none;
+    color: #03a9f4;
+}
+
+form .invalid{
+    text-align: center;
+    color: #F25E95;
+    font-size: 1.3em;
+}

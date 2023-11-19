@@ -7,36 +7,70 @@
     <title>Inicio de sesión</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="{% static '/styles/forms.css' %}" />
+    <link rel="stylesheet" href="{% static '/styles/form.css' %}" />
+    <link rel="stylesheet" href="{% static '/styles/form(light).css' %}" />
+    <link rel="stylesheet" href="{% static '/styles/responsive.css' %}" />
+    <script src="https://kit.fontawesome.com/cd39f42707.js" crossorigin="anonymous"></script>
   </head>
   <body>
     <main>
-      <h1>Iniciar sesión</h1>
-      <p id="error">{{ error }}</p>
       <form method="POST" id="login">
-        {% csrf_token %} {% comment %} {{ form.as_p }} {% endcomment %}
-        <div>
-          <label for="username">Usuario:</label>
-          <input
-            type="text"
-            name="username"
-            id="username"
-            placeholder="Usuario..."
-          />
+        {% csrf_token %}
+        <h2 class="title">Iniciar sesión</h2>
+        <p  class="invalid" id="error">{{ error }}</p>
+        <div class="inputs">
+          <div class="input-box">
+            <label for="username">Usuario</label>
+            <input
+              type="text"
+              placeholder="example@mail.com"
+              name="username"
+              id="username"
+              onkeydown="submitOnEnter(event, 'password')"
+            />
+          </div>
+          <div class="input-box">
+            <label for="password">Contraseña</label>
+            <input
+              type="password"
+              placeholder="password"
+              name="password"
+              id="password"
+              onkeydown="submitOnEnter(event)"
+            />
+          </div>
         </div>
-        <div>
-          <label for="password">Contraseña:</label>
-          <input
-            type="password"
-            name="password"
-            id="password"
-            placeholder="Contraseña..."
-          />
-        </div>
-        <button>iniciar sesión</button>
+        <a
+          href="javascript:void(0)"
+          onclick="submit(event)" class="submit"
+          >iniciar</a
+        >
+        <p id="center" class="new">
+          Registrar usuario nuevo <a href="/signup/"> aquí</a>
+        </p>
       </form>
-      <p id="center">Registrar usuario nuevo <a href="/signup/"> aquí</a></p>
     </main>
-    <script src="" async defer></script>
+    <script>
+      function submitOnEnter(event, nextField) {
+        if (event.key === "Enter") {
+          event.preventDefault();
+          if (nextField) {
+            document.getElementsByName(nextField)[0].focus();
+          } else {
+            var form = document.getElementById("login");
+            form.submit();
+          }
+        }
+      }
+    
+      // Use the correct class name for the click event
+      document.querySelector(".submit").addEventListener("click", function(event) {
+        // Prevent the default link behavior
+        event.preventDefault();
+        // Submit the form
+        var form = document.getElementById("login");
+        form.submit();
+      });
+    </script>
   </body>
 </html>

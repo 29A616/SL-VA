@@ -3,3 +3,4 @@
 test.py
 gunicorn_config.py
 /chatbot/static deprecated/
+/styles-v1/
