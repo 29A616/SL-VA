@@ -7,3 +7,6 @@ class ChatHistory(models.Model):
     date = models.DateTimeField(auto_now_add=True)
     user_message = models.TextField()
     va_message = models.TextField()
+    
+    def __str__(self):
+        return self.user_id.username

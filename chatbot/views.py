@@ -46,7 +46,7 @@ def signup(request):
                 user = User.objects.create_user(username=request.POST['username'], password=request.POST['password1'])
                 user.save()
                 login(request, user)
-                return HttpResponse('<body style="color: #fff; background-color: #1d1d1d"><h2>Registro exitoso <a href="/login/" style="color: skyblue;">iniciar sesión</a></h2></body>')
+                return HttpResponse('<body style="background: #011126; font: normal 12px Arial;"><h2 style="color: white;">Registro exitoso <a href="/login/" style="color: #03a9f4; text-decoration: none;">iniciar sesión</a></h2></body>')
             except IntegrityError:
                 return render(request, 'signup.html', {
             'form': UserCreationForm, 'error': 'El usuario ya existe'

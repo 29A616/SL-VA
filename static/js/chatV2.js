@@ -22,6 +22,13 @@ const handleSubmit = (e) => {
 
   const message = document.getElementById("message").value;
 
+  // Verificar si el mensaje está vacío
+  if (message.trim() === "") {
+    // Puedes mostrar un mensaje al usuario indicando que el campo está vacío
+    alert("Por favor, ingrese un mensaje antes de enviar.");
+    return;
+  }
+
   // Agregar el mensaje del usuario al HTML
   appendMessage(message, "userMessage");
 
