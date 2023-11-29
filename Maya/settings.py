@@ -34,6 +34,13 @@ ALLOWED_HOSTS = ['sl-va-production.up.railway.app', 'railway.app', '127.0.0.1', 
 CSRF_TRUSTED_ORIGINS = ['https://sl-va-production.up.railway.app']
 
 
+# Configurar la duración de la sesión
+SESSION_COOKIE_AGE = 600
+
+# Forzar la renovación de la sesión con cada solicitud
+SESSION_SAVE_EVERY_REQUEST = True
+
+
 # Application definition
 
 INSTALLED_APPS = [
