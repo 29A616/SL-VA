@@ -62,6 +62,9 @@ const handleSubmit = async (e) => {
     // Agregar la respuesta del chatbot al HTML
     appendMessage(response.data, "IAMessage");
 
+    // Limpiar el contenido del textarea después de enviar el mensaje
+    document.getElementById("message").value = "";
+
     const div = document.querySelector(".chat-messages");
     div.scrollTo(0, div.scrollHeight);
     document.querySelector("textarea#message").focus();
