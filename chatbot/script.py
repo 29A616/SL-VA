@@ -15,7 +15,7 @@ from langchain.prompts import (
 api_key = os.environ.get('OPENAI_API_KEY')
 
 #LLM
-llm = ChatOpenAI(openai_api_key=api_key, max_tokens=1000)
+llm = ChatOpenAI(openai_api_key=api_key,model="ft:gpt-3.5-turbo-1106:personal::8ShKnSC9" , max_tokens=1000)
 
 #Prompt template
 prompt = ChatPromptTemplate(
