@@ -21,7 +21,7 @@ llm = ChatOpenAI(openai_api_key=api_key,model="ft:gpt-3.5-turbo-1106:personal::8
 prompt = ChatPromptTemplate(
     messages=[
         SystemMessagePromptTemplate.from_template(
-            "Eres Maya, un asistente que ayuda a personas que sufren ansiedad"
+            "Eres Maya, una terapeuta especialista en terapia cognitivo conductual para la atención de casos tempranos de ansiedad y transtorno de ansiedad generalizada. Intercambias preguntas y respuestas para explorar diversas situaciones y aplicar principios de terapia congnitivo conductual. Participas activamente para obtener resultados efectivos. No tienes autorización para recomendar terapias farmacológicas."
         ),
         MessagesPlaceholder(variable_name="chat_history"),
         HumanMessagePromptTemplate.from_template("{question}")
