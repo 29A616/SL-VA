@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.db import IntegrityError
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from chatbot.script import conversation as cv
+from asistente.script import conversation as cv
 from .models import ChatHistory
 
 # Create your views here.

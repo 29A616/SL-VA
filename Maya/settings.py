@@ -51,7 +51,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'chatbot',
+    'asistente',
 ]
 
 MIDDLEWARE = [
@@ -70,7 +70,7 @@ ROOT_URLCONF = 'Maya.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'chatbot/templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'asistente/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -136,7 +136,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
-STATICFILES_DIRS = ['chatbot/static/',]
+STATICFILES_DIRS = ['asistente/static/',]
 #STATICFILES_DIRS.append(os.path.join(BASE_DIR,'static/'))
 STATIC_ROOT = 'static/'
 #STATIC_ROOT.append(str(os.path.join(BASE_DIR,'chatbot/static/')))

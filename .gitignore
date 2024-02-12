@@ -4,3 +4,7 @@ test.py
 gunicorn_config.py
 /chatbot/static deprecated/
 /styles-v1/
+cop.py
+/.webdev2/
+.dbsqlite3
+/chatbot/
